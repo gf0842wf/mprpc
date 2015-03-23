@@ -6,6 +6,7 @@ from gevent.monkey import patch_all; patch_all()
 import time
 
 from pu.gpool import ConnectionPool
+import cProfile
 
 NUM_CALLS = 10000
 
@@ -17,7 +18,11 @@ def call():
 
     start = time.time()
 
+    # p = cProfile.Profile()
+    # p.enable()
     list(pool.map('call', [(('sum', 1, 2), {}), ] * NUM_CALLS))
+    # p.disable()
+    # p.print_stats(sort='tottime')
 
     print 'call: %d qps' % (NUM_CALLS / (time.time() - start))
 
