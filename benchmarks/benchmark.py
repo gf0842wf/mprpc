@@ -8,18 +8,6 @@ import time
 NUM_CALLS = 10000
 
 
-def run_sum_server():
-    from gevent.server import StreamServer
-    from mprpc import RPCHandler
-
-    class SumHandler(RPCHandler):
-        def sum(self, x, y):
-            return x + y
-
-    server = StreamServer(('0.0.0.0', 6000), SumHandler())
-    server.serve_forever()
-
-
 def call():
     from mprpc import RPCClient
 
