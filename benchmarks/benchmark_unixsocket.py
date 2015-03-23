@@ -11,7 +11,7 @@ NUM_CALLS = 10000
 def call():
     from mprpc import RPCClient
 
-    client = RPCClient('ipc://test.sock')
+    client = RPCClient('ipc://x.sock')
 
     start = time.time()
     [client.call('sum', 1, 2) for _ in xrange(NUM_CALLS)]
